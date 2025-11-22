@@ -2,7 +2,9 @@ import { ref } from 'vue'
 const MOCK_ENDPOINT = 'https://mocki.io/v1/chat/completions'
 
 export default function useChatApi() {
-const messages = ref([])
+  // --- Load from localStorage ---
+const saved = localStorage.getItem(STORAGE_KEY)
+const messages = ref(saved ? JSON.parse(saved) : [])
 const isTyping = ref(false)
 const status = ref('آماده')
 
