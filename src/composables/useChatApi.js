@@ -25,9 +25,11 @@ const data = await res.json()
 const text = data?.choices?.[0]?.message?.content || 'پاسخی دریافت نشد.'
 
 messages.value.push({ id: Date.now() + 1, role: 'assistant', content: text, time: Date.now() })
+
 } catch {
 messages.value.push({ id: Date.now() + 2, role: 'assistant', content: 'خطا در اتصال', time: Date.now() })
 } finally {
+localStorage.setItem(STORAGE_KEY, JSON.stringify(messages.value))
 isTyping.value = false
 status.value = 'آماده'
 }
