@@ -1,6 +1,6 @@
 import { ref } from 'vue'
 const MOCK_ENDPOINT = 'https://mocki.io/v1/chat/completions'
-
+const STORAGE_KEY = 'chat_messages'
 export default function useChatApi() {
   // --- Load from localStorage ---
 const saved = localStorage.getItem(STORAGE_KEY)
